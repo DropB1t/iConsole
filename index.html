@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>iConsole</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="start">
+      <h1 class="starth1">
+        <span>Welcome to <br> <span id="proname">[iConsole]</span> </span>
+      </h1>
+      </br>
+      <span class="startspan"><strong>Initializing</strong></span>
+    </div>
+
+    <div class="main-container" style="display:none;">
+      <div class="console">
+        <div class="header">
+          <i class="fa fa-terminal terminal" aria-hidden="true"></i>
+          <h3 id="header-h">[ iConsole ]</h3>
+          <i class="fa fa-times exit" aria-hidden="true"></i>
+          <i class="fa fa-minus minimize" aria-hidden="true"></i>
+        </div>
+        <div class="mainWindow">
+          $ <span id="typed"></span>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="typed.js"></script>
+    <script src="common.js"></script>
+  </body>
+</html>
