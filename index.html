@@ -11,16 +11,16 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <div class="main-container">
 
-    <div class="start">
-      <h1 class="starth1">
-        <span>Welcome to <br> <span id="proname">[iConsole]</span> </span>
-      </h1>
-      </br>
-      <span class="startspan"><strong>Initializing</strong></span>
-    </div>
+      <div class="start">
+        <h1 class="starth1">
+          <span>Welcome to <br> <span id="proname">[iConsole]</span> </span>
+        </h1>
+        </br>
+        <span class="startspan"><strong>Initializing</strong></span>
+      </div>
 
-    <div class="main-container" style="display:none;">
       <div class="console">
         <div class="header">
           <i class="fa fa-terminal terminal" aria-hidden="true"></i>
@@ -32,10 +32,21 @@
           $ <span id="typed"></span>
         </div>
       </div>
+
+      <div class="explainJS">
+        <h2>What is JavaScript?</h2>
+        <div>
+          <p>JavaScript is a scripting or programming language that allows you to implement complex things
+            on web pages — every time a web page does more than just sit there and display static
+            information for you to look at — displaying timely content updates, interactive maps, animated
+            2D/3D graphics, scrolling video jukeboxes, etc.
+          </p>
+        </div>
+      </div>
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
     <script src="typed.js"></script>
     <script src="common.js"></script>
   </body>
