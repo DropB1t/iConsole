@@ -27,28 +27,37 @@ $(document).ready(function() {
 
       var typed = new Typed('#typed',{
         strings: ["Hello, my name is [iConsole]. I'm honored to meet you!^1000","I was created with a programming language called JavaScript^1000",
-                  "What?^1200 You don't know what is JavaScript?^800  ","Let me explain you very briefly..."],
+                  "What?^1200 You don't know what is JavaScript?^800  ","Let me explain you very briefly...","..."],
         startDelay: 2500,
         cursorChar: "|",
         typeSpeed: 30,
         onComplete: function () {
           // $(".typed-cursor").hide(),
-          explain()
-        }
+          $(".explainJS").css('display', 'inline-block');
+          $(".explainJS").addClass('animated bounceInLeft').one(animationEnd, function() {
+            $(this).removeClass('animated bounceInLeft');
+          });
+          $("#explain-b").click( function() {
+            $(".explainJS").css('animation-delay', '0');
+            $(".explainJS").addClass('animated bounceOutLeft fast').one(animationEnd,function () {
+              $(this).removeClass('animated bounceOutLeft');
+              $(this).css('display', 'none');
+              typed.destroy();
+              animations();
+            });
+          });
+        },
+        onDestroy: function(self) {}
       });
   }
 
-  function explain() {
-    $(".explainJS").css('display', 'inline-block');
-    $(".explainJS").addClass('animated bounceInLeft').one(animationEnd, function() {
-      $(this).removeClass('animated bounceInLeft');
-    });
-    $("#explain-b").click( function() {
-      $(".explainJS").css('animation-delay', '0');
-      $(".explainJS").addClass('animated bounceOutLeft fast').one(animationEnd,function () {
-        $(this).removeClass('animated bounceOutLeft');
-        $(this).css('display', 'none');
-      });
+  function animations(){
+    var typed2 = new Typed('#typed', {
+      strings: ["Now I show you how I can animate all that stuff! :)","click each of this button once to start an animation..."],
+      typeSpeed: 30,
+      startDelay: 2000,
+      cursorChar: "|",
+      onComplete: function() {}
     });
   }
 
