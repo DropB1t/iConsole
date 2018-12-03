@@ -1,23 +1,23 @@
 $(document).ready(function() {
-  var animationEnd = 'animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd'; //controlla se l'animazione è finita
+  var animationEnd = 'animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd'; //check if the animation is over
 
   $(".console").css('display', 'none');
   $(".explainJS").css('display', 'none');
 
-  $('.main-container').animate({ //animazione della schermata iniziale
+  $('.main-container').animate({ //space of the first animation
     width: "100%",
     opacity: 1
   }, 1000);
 
   $('.startspan').addClass('animated fadeInLeft');
-  $('.starth1').addClass('animated fadeInDown').one(animationEnd,function() { //prima animazione del titolo
-    $(this).removeClass('animated fadeInDown'); //rimuove la classe contenente la prima animazione tramite il callback
-    $(this).css('animation-iteration-count', '3'); //decide quante volte fare la seconda animazione
+  $('.starth1').addClass('animated fadeInDown').one(animationEnd,function() { //first title animation
+    $(this).removeClass('animated fadeInDown'); //remove the class of the first animation using the callback
+    $(this).css('animation-iteration-count', '3'); //decide how many times the text will be animated
     $(this).addClass('animated pulse').one(animationEnd,function () {
-      $(".start").addClass('animated bounceOutDown').one(animationEnd,console());
-    }); //seconda animazione del titolo
+      $(".start").addClass('animated bounceOutDown').one(animationEnd,console()); //second title animation
+    });
   });
-   //animazione della scritta "Initializing"
+   //"Initializing" animation
   function console(){
       $(".console").css('display', 'inline-block');
       $(".console").addClass('animated fadeInDown').one(animationEnd, function() {
@@ -53,10 +53,10 @@ $(document).ready(function() {
 
   function animations(){
     var typed2 = new Typed('#typed', {
-      strings: ["Now I show you how I can animate all that stuff! :)","click each of this button once to start an animation..."],
+      strings: ["Now i'm going to show you some funny things that you can do using JavaScript...^800","Something like this..."],
       typeSpeed: 30,
-      startDelay: 2000,
       cursorChar: "|",
+      startDelay: 2000,
       onComplete: function() {}
     });
   }

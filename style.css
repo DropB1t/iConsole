@@ -18,7 +18,7 @@ body{
   text-align: center;
 } */
 
-.starth1 {
+.starth1 { /* starting title's section */
   margin-top: 250px;
   display:inline-block;
   font-size: 75px;
@@ -26,7 +26,7 @@ body{
   animation-delay: 2s;
 }
 
-#proname {
+#proname { /* starting title */
   color: #6DE234;
   text-shadow: 2px 2px 2px #398413;
 }
@@ -51,7 +51,7 @@ body{
   text-align: center;
 }
 
-.console { /* corpo della console */
+.console { /* console's body */
   position: absolute;
   top:0;
   bottom: 0;
@@ -68,7 +68,7 @@ body{
   animation-delay: 1.5s;
 }
 
-.mainWindow {
+.mainWindow { /* console's screen */
   font-family: 'Ubuntu Mono', monospace;
   text-align: left;
   padding-top: 25px;
@@ -76,28 +76,28 @@ body{
   color: #6DE234;
 }
 
-.header { /* sezione di testo iConsole */
+.header { /* iConsole text's section */
   background-color: #746E77;
   text-align: center;
   padding: 4px 5px 3px 8px;
 }
 
-.terminal { /*tasto >_*/
+.terminal { /*>_ fake button*/
   float: left;
   margin-bottom: 5px;
 }
 
-.minimize { /*tasto - */
+.minimize { /* - fake button */
   float: right;
   padding: 3px;
 }
 
-.exit { /* tasto x */
+.exit { /* x fake button*/
   float: right;
   padding: 3px;
 }
 
-#header-h {
+#header-h { /* console's name */
   margin: 0;
   display:inline-block;
   font-size: 17px;
@@ -105,7 +105,7 @@ body{
   text-shadow: 1px 1px 2px #6D696D;
 }
 
-.explainJS {
+.explainJS { /* JavaScript description */
   position: absolute;
   display: inline-block;
   max-width: 350px;
@@ -123,7 +123,7 @@ body{
   animation-delay: 1s;
 }
 
-.explainJS h2 {
+.explainJS h2 { /* JavaScript title description */
   text-decoration: underline;
   background-color: #844E6F;
   border-radius: 5px;
@@ -141,7 +141,7 @@ body{
   border-radius: 5px;
 }
 
-.explainJS button {
+.explainJS button { /* button that will make the JavaScript description appear */
   padding: 5px;
   margin: 5px;
   margin-bottom: 0;
