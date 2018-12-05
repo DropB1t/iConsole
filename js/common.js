@@ -1,6 +1,5 @@
 $(document).ready(function() {
-  var animationEnd = 'animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd'; //check if the animation is over
-
+  const animationEnd = 'animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd'; //check if the animation is over
   $(".console").css('display', 'none');
   $(".explainJS").css('display', 'none');
 
@@ -17,7 +16,7 @@ $(document).ready(function() {
       $(".start").addClass('animated bounceOutDown').one(animationEnd,console()); //second title animation
     });
   });
-   //"Initializing" animation
+
   function console(){
       $(".console").css('display', 'inline-block');
       $(".console").addClass('animated fadeInDown').one(animationEnd, function() {
@@ -51,6 +50,7 @@ $(document).ready(function() {
       });
   }
 
+  //"Initializing" animation
   function animations(){
     var typed2 = new Typed('#typed', {
       strings: ["Now i'm going to show you some funny things that you can do using JavaScript...^800","Something like this..."],
