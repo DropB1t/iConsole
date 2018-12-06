@@ -36,12 +36,7 @@ $(document).ready(function() {
     autoplay: false
   });
 
-  $(".start").css('display', 'none');
-  $(".console").css('display', 'none');
-  $(".explainJS").css('display', 'none');
-  $(".btn button").css('display', 'none');
-  $(".end").css('display', 'none');
-  $(".fireworks").css('display', 'none');
+  $(".start, .console, .explainJS, .btn button, .end, .fireworks").css('display', 'none');
 
   $('.main-container').animate({ //space of the first animation
     width: "100%",
