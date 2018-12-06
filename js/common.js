@@ -14,10 +14,34 @@ $(document).ready(function() {
     }
   })(document.createElement('div')); //check if the animation is over
 
+  fireworks();
+
+  var TransformsCircle = anime({
+    targets: '.circle',
+    translateX: 250,
+    translateY: function(el, i, l) {return i * 250;},
+    delay: function(el, i, l) {return i * 1500;},
+    rotate: 540,
+    direction: 'alternate',
+    autoplay: false
+  });
+
+  var TransformsCircleR = anime({
+    targets: '.circle-r',
+    translateX: -250,
+    translateY: function(el, i, l) {return i * 250;},
+    delay: function(el, i, l) {return i * 1500;},
+    rotate: 540,
+    direction: 'alternate',
+    autoplay: false
+  });
 
   $(".start").css('display', 'none');
   $(".console").css('display', 'none');
   $(".explainJS").css('display', 'none');
+  $(".btn button").css('display', 'none');
+  $(".end").css('display', 'none');
+  $(".fireworks").css('display', 'none');
 
   $('.main-container').animate({ //space of the first animation
     width: "100%",
@@ -41,7 +65,7 @@ $(document).ready(function() {
   });
 
   function console(){
-      $(".console").css('display', 'block');
+      $(".console").css('display', 'flex');
       $(".console").addClass('animated fadeInDown').one(animationEnd, function() {
         $(".start").css('display', 'none');
         $(this).removeClass('animated fadeInDown');
@@ -54,7 +78,6 @@ $(document).ready(function() {
         cursorChar: "|",
         typeSpeed: 30,
         onComplete: function () {
-          // $(".typed-cursor").hide(),
           $(".explainJS").css('display', 'block');
           $(".explainJS").addClass('animated bounceInLeft').one(animationEnd, function() {
             $(this).removeClass('animated bounceInLeft');
@@ -76,12 +99,146 @@ $(document).ready(function() {
   //"Initializing" animation
   function animations(){
     var typed2 = new Typed('#typed', {
-      strings: ["Now I'm going to show you some funny things that you can do using JavaScript...^800","Something like this..."],
+      strings: ["Now I'm going to show you some funny things that you can do using JavaScript...^800","Press the buttons below to see some magic..."],
       typeSpeed: 30,
       cursorChar: "|",
       startDelay: 1000,
-      onComplete: function() {}
+      onComplete: function() {
+        var done = -1;
+        $("#btn-animL, #btn-animR").css('display', 'block');
+        $('.btn button').addClass('animated fadeIn').one(animationEnd, function() {
+          $(this).removeClass('animated fadeIn');
+        });;
+        $("#btn-animL").click( function(){
+          TransformsCircle.play();
+          TransformsCircleR.play();
+          $(this).addClass('animated fadeOutUp').one(animationEnd, function() {
+            $(this).css('display', 'none');
+            done++;
+            if(done == 1){
+              typed2.destroy();
+              endAnim();
+            }
+          });
+        });
+        $("#btn-animR").click( function(){
+          bluePattern();
+          $('.main-container').animate({
+             backgroundColor: "#3F69F4",
+             boxShadow: "inset 0 0 20px #1B368E"
+           }, 7000,function(){
+             $(".el").each(function(index, el) {
+               el.remove();
+             });
+           });
+          $('.console').animate({
+            boxShadow: "5px 5px 2px #1B368E"
+          }, 7000);
+          $(this).addClass('animated fadeOutUp').one(animationEnd, function() {
+            $(this).css('display', 'none');
+            done++;
+            if(done == 1){
+              typed2.destroy();
+              endAnim();
+            }
+          });
+        });
+
+      }
     });
+  }
+
+  function endAnim() {
+    $("#btn-animD").css('display', 'block');
+    $("#btn-animD").addClass('animated fadeIn').one(animationEnd, function() {
+      $(this).removeClass('animated fadeIn');
+    });
+    $("#btn-animD").click( function(){
+      $(this).addClass('animated fadeOutUp').one(animationEnd, function() {
+        $(this).css('display', 'none');
+    });
+      var typed3 = new Typed('#typed',{
+        strings: ["Cool right?!^800 I could also continue but unfortunately my time is running out",
+                  "I'll leave you one last gift before turning off^1000","When the light goes out, and night falls, try to press the mouse button^800.^800.^800.^800 Ok? :)^1500",
+                  "I hope to see you soon ;)^800"],
+        startDelay: 2500,
+        cursorChar: "|",
+        typeSpeed: 30,
+        onComplete: function () {
+          $('.console').animate({
+            boxShadow: "5px 5px 2px #050506"
+          }, 3000);
+          $('.main-container').animate({
+             backgroundColor: "#111116",
+             boxShadow: "inset 0 0 20px #050506"
+           }, 3000,function() {
+             $(".console").addClass('animated zoomOut').one(animationEnd, function() {
+               $(this).css('display', 'none');
+               $(".end").css('display', 'block');
+               $(".end").css('animation-iteration-count', '3');
+               $(".end").addClass('animated flash');
+               $(".fireworks").css('display', 'block');
+               fireworks();
+             });
+           });
+        },
+        onDestroy: function(self) {}
+      });
+    });
+  }
+
+  function fireworks(){
+    window.human = false;
+    var centerX = window.innerWidth / 2;
+    var centerY = window.innerHeight / 2;
+
+    window.addEventListener('load', function() {
+      fireworks.render.play();
+      fireworks.setCanvasSize();
+    }, false);
+  }
+
+  function bluePattern() {
+    const wrapperEl = document.body;
+    const numberOfEls = 280;
+    const duration = 3000;
+    const delay = duration / numberOfEls;
+    const radius = window.innerWidth < window.innerHeight ? window.innerWidth : window.innerHeight;
+    const distance = radius / 4 <= 150 ? 150 : radius / 3;
+
+    let tl = anime.timeline({
+      duration: delay,
+      complete: function() {}
+    });
+
+    function createEl(i) {
+      let el = document.createElement('div');
+      const hue = Math.round(360 / numberOfEls * i);
+      const angle = i;
+      el.classList.add('el');
+      el.style.backgroundColor = 'hsl(' + hue + ', 40%, 60%)';
+      tl.add({
+        begin: function() {
+          var randomDistance = anime.random(distance - 50, distance + 50);
+          anime({
+            targets: el,
+            // backgroundColor: ['#fff', '#000'],
+            translateX: [0, Math.sin(angle) * randomDistance],
+            translateY: [0,Math.cos(angle) * randomDistance],
+            scale: [
+              {value: [0, anime.random(5, 10) * .1], easing: 'easeOutBack'},
+              {value: 0, easing: 'easeInBack'},
+            ],
+            easing: 'easeInOutSine',
+            direction: 'reverse',
+            duration: duration
+          });
+        }
+      });
+      wrapperEl.appendChild(el);
+    };
+
+    for (let i = 0; i < numberOfEls; i++) createEl(i);
   }
 
 });
