@@ -188,8 +188,8 @@ $(document).ready(function() {
     var centerY = window.innerHeight / 2;
 
     window.addEventListener('load', function() {
-      fireworks.render.play();
       fireworks.setCanvasSize();
+      fireworks.render.play();
     }, false);
   }
 
