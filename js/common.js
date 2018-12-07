@@ -21,7 +21,10 @@ $(document).ready(function() {
     delay: function(el, i, l) {return i * 1500;},
     rotate: 540,
     direction: 'alternate',
-    autoplay: false
+    autoplay: false,
+    complete: function(anim) {
+      $(".circle-r").css('display','none');
+    }
   });
 
   var TransformsCircleR = anime({
@@ -31,10 +34,13 @@ $(document).ready(function() {
     delay: function(el, i, l) {return i * 1500;},
     rotate: 540,
     direction: 'alternate',
-    autoplay: false
+    autoplay: false,
+    complete: function(anim) {
+      $(".circle-r").css('display','none');
+    }
   });
 
-  $(".start, .console, .explainJS, .btn button, .end, .fireworks").css('display', 'none');
+  $(".start, .console, .explainJS, .btn button, .end, .fireworks, .circle, .circle-r").css('display', 'none');
 
   $('.main-container').animate({ //space of the first animation
     width: "100%",
@@ -103,6 +109,7 @@ $(document).ready(function() {
           $(this).removeClass('animated fadeIn');
         });;
         $("#btn-animL").one("click", function(){
+          $(".circle, .circle-r").css('display','block');
           TransformsCircle.play();
           TransformsCircleR.play();
           $(this).addClass('animated fadeOutUp').one(animationEnd, function() {
