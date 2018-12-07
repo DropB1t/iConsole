@@ -119,7 +119,7 @@ var fireworks = (function() {
     // ga('send', 'event', 'Fireworks', 'Click');
   }, false);
 
-  window.addEventListener('resize', setCanvasSize, false);
+  window.addEventListener('resize', setCanvasSize, true);
 
   return {
     render: render,
