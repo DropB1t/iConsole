@@ -14,8 +14,6 @@ $(document).ready(function() {
     }
   })(document.createElement('div')); //check if the animation is over
 
-  fireworks();
-
   var TransformsCircle = anime({
     targets: '.circle',
     translateX: 250,
@@ -43,7 +41,7 @@ $(document).ready(function() {
     opacity: 1
   }, 1000);
 
-  $("#btn-start").click(function() {
+  $("#btn-start").one("click", function() {
     $("#btn-start").animate({ //space of the first animation
       opacity: 0
     },1200,function(){$("#btn-start").css('display', 'none');});
@@ -77,7 +75,7 @@ $(document).ready(function() {
           $(".explainJS").addClass('animated bounceInLeft').one(animationEnd, function() {
             $(this).removeClass('animated bounceInLeft');
           });
-          $("#explain-b").click( function() {
+          $("#explain-b").one("click", function() {
             $(".explainJS").css('animation-delay', '0');
             $(".explainJS").addClass('animated bounceOutLeft fast').one(animationEnd,function () {
               $(this).removeClass('animated bounceOutLeft');
@@ -104,7 +102,7 @@ $(document).ready(function() {
         $('.btn button').addClass('animated fadeIn').one(animationEnd, function() {
           $(this).removeClass('animated fadeIn');
         });;
-        $("#btn-animL").click( function(){
+        $("#btn-animL").one("click", function(){
           TransformsCircle.play();
           TransformsCircleR.play();
           $(this).addClass('animated fadeOutUp').one(animationEnd, function() {
@@ -116,7 +114,7 @@ $(document).ready(function() {
             }
           });
         });
-        $("#btn-animR").click( function(){
+        $("#btn-animR").one("click", function(){
           bluePattern();
           $('.main-container').animate({
              backgroundColor: "#3F69F4",
@@ -148,7 +146,7 @@ $(document).ready(function() {
     $("#btn-animD").addClass('animated fadeIn').one(animationEnd, function() {
       $(this).removeClass('animated fadeIn');
     });
-    $("#btn-animD").click( function(){
+    $("#btn-animD").one("click", function(){
       $(this).addClass('animated fadeOutUp').one(animationEnd, function() {
         $(this).css('display', 'none');
     });
@@ -188,8 +186,8 @@ $(document).ready(function() {
     var centerY = window.innerHeight / 2;
 
     window.addEventListener('load', function() {
-      fireworks.setCanvasSize();
       fireworks.render.play();
+      fireworks.setCanvasSize();
     }, false);
   }
 
