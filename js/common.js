@@ -191,7 +191,7 @@ $(document).ready(function() {
     window.human = false;
     var centerX = window.innerWidth / 2;
     var centerY = window.innerHeight / 2;
-
+    if (window.human) return;
     window.addEventListener('load', function() {
       fireworks.render.play();
       fireworks.setCanvasSize();
