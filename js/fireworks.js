@@ -120,6 +120,7 @@ var fireworks = (function() {
   }, false);
 
   window.addEventListener('resize', setCanvasSize, false);
+  window.addEventListener('load', setCanvasSize, false);
 
   return {
     render: render,
